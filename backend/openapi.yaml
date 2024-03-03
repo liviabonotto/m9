@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Documentação da API de Pesquisa
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /research/upload:
+    post:
+      summary: Carregar um arquivo CSV e processá-lo
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                uploadDto:
+                  type: object
+                  required:
+                    - columns
+                    - header
+                    - separator
+                  properties:
+                    columns:
+                      type: integer
+                      default: 0
+                    header:
+                      type: boolean
+                      default: true
+                    separator:
+                      type: string
+                      default: ","
+      responses:
+        '200':
+          description: CSV processado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+  /research/status/{id}:
+    get:
+      summary: Obter o status do processamento de um arquivo CSV
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Status do processamento
+          content:
+            application/json:
+              schema:
+                type: object
+  /research/{id}:
+    get:
+      summary: Obter um registro de pesquisa específico
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Registro de pesquisa
+          content:
+            application/json:
+              schema:
+                type: object
+  /research:
+    get:
+      summary: Listar todos os registros de pesquisa
+      responses:
+        '200':
+          description: Lista de registros de pesquisa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Research'
+    delete:
+      summary: Excluir um registro de pesquisa específico
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Registro de pesquisa excluído com sucesso
+  /research/distribute/{id}:
+    get:
+      summary: Distribuir um registro de pesquisa específico para os usuários
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Registro de pesquisa distribuído com sucesso
+components:
+  schemas:
+    UploadDto:
+      type: object
+      required:
+        - columns
+        - header
+        - separator
+      properties:
+        columns:
+          type: number
+          default: 0
+        header:
+          type: boolean
+          default: true
+        separator:
+          type: string
+          default: ","
+    Research:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string

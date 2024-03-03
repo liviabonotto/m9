@@ -1,0 +1,152 @@
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+
+  .selectLabel {
+    width: max-content;
+    padding: 4px;
+    background-color: white;
+  }
+  
+  .select {
+    height: 56px;
+    border-radius: 4px;
+    padding: 8px;
+  
+    .option {
+      padding: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.filesContainer {
+  display: flex;
+  margin-top: 24px;
+  gap: 16px;
+
+  .download {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .col {
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+
+        svg {
+          color: #007c48;
+        }
+
+        h3 {
+          font-size: 18px;
+          font-weight: normal;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+
+      .button {
+        width: 140px;
+        height: 48px;
+        background-color: white;
+        border: solid 1px #007c48;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #fafafa;
+        }
+      }
+    }
+
+    background-color: #f4f5f7;
+    border-radius: 5px;
+  }
+
+  .upload {
+    width: 100%;
+    border: solid 1px #8C8895;
+    border-radius: 5px;
+
+    .container {
+      padding: 16px;
+      display: flex;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      svg {
+        color: #007c48;
+      }
+
+      p {
+        text-align: center;
+        padding: 0 16px;
+      }
+    }
+
+    .uploadInput {
+      color: #007c48;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.fileUploaded {
+  display: flex;
+  align-self: flex-end;
+  width: calc(50% - 16px);
+  margin-top: 16px;
+  background-color: #F9FAFC;
+  border: solid 1px #8C8895;
+  border-radius: 10px;
+  gap: 8px;
+
+  padding: 12px;
+
+  svg {
+    color: #007c48;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+
+    .description {
+      color: #5E586B;
+    }
+  }
+}
+
+.line {
+  margin: 24px 0;
+  border: solid 1PX #D6D6D6;
+}
+
+.next {
+  margin-left: auto;
+  width: 140px;
+  height: 48px;
+  justify-content: flex-end;
+  background-color: #007c48;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
